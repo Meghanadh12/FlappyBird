@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private Spawner spawner;
 
     public Text scoreText;
+    public Text highScoreText;
     public GameObject playButton;
     public GameObject gameOver;
     public int score { get; private set; }
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
-
+        highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
         Pause();
     }
 
@@ -57,6 +58,11 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+        if(score > PlayerPrefs.GetInt("HighScore" , 0))
+        {
+            PlayerPrefs.SetInt("HighScore" , score);
+            highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}"; 
+        }
     }
 
 }
