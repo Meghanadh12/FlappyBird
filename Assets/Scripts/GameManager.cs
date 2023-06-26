@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
-        highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
+        highScoreText.text = $"HighScore: { PlayerPrefs.GetInt("HighScore", 0) }";
         Pause();
     }
 
